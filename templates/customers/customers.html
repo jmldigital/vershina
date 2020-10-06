@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load bootstrap_tags %}
+{% block content %}
+{% load static %}
+
+{% if user.is_superuser %}
+
+<div style="padding-left:5%;padding-right:5%;">
+    <div class="col-md-auto">
+<h1 class="text-center"> Список покупателей</h1>
+<table id="example" class="table table-striped display nowrap " style="width:100%;">
+        <thead>
+            <tr>
+                <th>Дата покупки</th>
+                <th>ФИО</th>
+                <th>Канал</th>
+                <th>Сумма/кол-во</th>
+                <th>Скидка</th>
+                <th>Как платит</th>
+                <th>Телефон</th>
+				<th>Почта</th>
+				<th>Адрес</th>
+				<th>ДР</th>
+                <th>Соцсети</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% for item in customers_numb %}
+            <tr>
+                <td>{{ item.created}}</td>
+                <td>{{ item.customer_fio}}</td>
+                <td>{{ item.customer_arrival_channel}}</td>
+                <td>{{ item.purchase_detail}}</td>
+                <td>{{ item.purchase_sales}}</td>
+                <td>{{ item.purchase_detail_type}}</td>
+				<td>{{ item.customer_phone}}</td>
+				<td>{{ item.customer_post}}</td>
+                <td>{{item.customer_address}}</td>
+				<td>{{item.customer_birthday}}</td>
+
+                <td>
+
+                        {% autoescape off %}
+                       {{  item.customer_smms }}
+                        {% endautoescape %}
+
+
+                </td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Всего {{ customers_numb.count }}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+        {% endif %}
+
+   <br> {{ ddd }} <br>
+
+
+
+
+</div>
+{% block js_stuff %}
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script type = "text/javascript">
+    $(document).ready(function(){
+        $('#example').DataTable(
+            {
+        "scrollX": true
+    }
+
+
+        );
+    });
+</script>
+
+
+{% endblock js_stuff %}
+{% endblock %}

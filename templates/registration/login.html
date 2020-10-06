@@ -1,0 +1,18 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %} &nbsp;{% block content %}
+    {% load widget_tweaks %}{% load bootstrap_tags %}
+
+
+<div class="container">
+    <div class="row align-items-center" style="height:80vh;">
+        <div class="col-md-6 offset-md-3">
+
+
+<form method="post" class="col-md-6 offset-md-3">
+    <h2>Вход в систему</h2>
+  {% csrf_token %}
+  {{  form|as_bootstrap }}
+  <button type="submit" class="btn btn-primary"> Войти</button>
+</form>
+        </div></div></div>
+{% endblock content %}

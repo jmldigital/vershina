@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+{% load bootstrap_tags %}
+
+
+  <!-- Content here -->
+
+
+
+        {% if user.is_superuser %}
+
+
+
+    <div class="col-md-auto">
+<h1 class="text-center"> Новая продажа</h1>
+        <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+        <form action="" method ="post" class="text-right" > {% csrf_token %}
+<div class="p-3">
+            <p>
+                <label>Канал прихода клиента </label>
+                {% render_field form.customer_arrival_channel class+="form-control" %}
+{#       {{ form.customer_arrival_channel }}#}
+             </p>
+
+            <p>
+             <label>Сумма покупки/общее кол-во покупок клиента </label>
+        <input name = "{{ form.purchase_detail.name }}" class="form-control">
+             </p>
+
+    <p>
+                <label>Скидка клиента в % </label>
+                {% render_field form.purchase_sales class+="form-control" %}
+             </p>
+
+            <p>
+             <label>Способ оплаты </label>
+                {% render_field form.purchase_detail_type class+="form-control" %}
+             </p>
+</div>
+            <h2> Контактные данные</h2>
+            <p>
+             <label>Телефон клиента </label>
+        <input name = "{{ form.customer_phone.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>Почта клиента </label>
+        <input name = "{{ form.customer_post.name }}" class="form-control">
+             </p>
+<div class="p-1">
+            <h4> Соцсети</h4>
+            <p>
+             <label>Вконтакте </label>
+        <input name = "{{ form.customer_vkontakt.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>Ссылка на профиль в Однокласниках </label>
+        <input name = "{{ form.customer_odnoklassnik.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>Ссылка на профиль в Instagram </label>
+        <input name = "{{ form.customer_instagram.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>Ссылка на профиль в Тикток </label>
+        <input name = "{{ form.customer_tikto.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>Ссылка на профиль в Фейсбук </label>
+        <input name = "{{ form.customer_fb.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>Вотсап </label>
+        <input name = "{{ form.customer_whatsap.name }}" class="form-control">
+             </p>
+
+</div>
+
+            <h2> Личные данные</h2>
+            <p>
+             <label>ФИО </label>
+        <input name = "{{ form.customer_fio.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>Адрес клиента </label>
+                    <input name = "{{ form.customer_address.name }}" class="form-control">
+             </p>
+
+            <p>
+             <label>День рождения </label>
+                    <input name = "{{ form.customer_birthday.name }}" class="form-control">
+            </p>
+
+            <div>  <button type="submit" class="btn btn-primary"> Добавить</button> </div>
+
+        </form></div>
+        <div class="col-sm"></div>
+    </div></div>
+
+
+{% endif %}</div>
+
+<tbody>
+		{% for item in customers %}
+            <tr>
+                <td>{{ item.customer_fio}}</td>
+                <td>{{ item.customer_arrival_channel}}</td>
+                <td>{{ item.purchase_detail}}</td>
+                <td>{{ item.purchase_sales}}</td>
+                <td>{{ item.purchase_detail_type}}</td>
+				<td>{{ item.customer_phone}}</td>
+				<td>{{ item.customer_post}}</td>
+                <td>{{item.customer_address}}</td>
+				<td>{{item.customer_birthday}}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+
+{% endblock %}

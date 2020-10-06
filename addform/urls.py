@@ -20,4 +20,5 @@ from . import views
 
 urlpatterns = [
     url('addform/', views.addform, name='addform'),
+    path('', views.index, name='index'),
 ]

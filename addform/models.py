@@ -131,7 +131,7 @@ class Customers(models.Model):
 
     customer_fb = models.CharField(
         null=True,
-        max_length=20,
+        max_length=120,
         blank=True,
         verbose_name='в Фейсбук'
     )
@@ -165,7 +165,7 @@ class Customers(models.Model):
     )
 
     customer_smms = models.CharField (
-        max_length=200,
+        max_length=600,
         editable=False,
         null=True,
         blank=True,
@@ -189,10 +189,15 @@ class Customers(models.Model):
         smm_list = Customers.smm(self).split()
 
         dd = [x for x in smm_list if x != "None"]
-        ss = "<br>".join(dd)
+        a = ['<a href="' + x + '">' + x + "</a></div>" for x in dd]
+
+        ss = '<div>'.join(a)
 
         self.customer_smms = ss
         super(Customers, self).save(*args, **kwargs)
+
+
+
 
 
     class Meta:

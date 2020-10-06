@@ -23,6 +23,20 @@ def customers_table(request):
     ss = customers_numb.count
 
 
+    dd = ['петя','вася','саня','вова','коля','петр','ваня',]
+    a = ['<a href="' + x + '">' + x + "</a>" for x in dd]
+
+    b = len(dd)
+    # for a in range(b):
+    #
+    #     dd.insert(a, "<a href=")
+    #     dd.insert(a-1, "></a>")
+
+
+
+    ss = "<b>".join(a)
+
+
 
 
 

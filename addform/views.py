@@ -12,3 +12,6 @@ def addform(request):
 
 
     return render(request, 'addform/addform.html', locals())
+
+def index(request):
+    return render(request, 'addform/addform.html', locals())

@@ -23,4 +23,4 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('addform.urls')),
     path('', include('customers_table.urls')),
-]
+ ]

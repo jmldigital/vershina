@@ -17,6 +17,13 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# import mysql.connector
+#
+# mydb = mysql.connector.connect(
+#   host="127.0.0.1",
+#   user="jmilo",
+#   passwd="5Ytf*NCgke_,56w"
+# )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -82,8 +89,12 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'vershina',
+        'USER': 'jmilo',
+        'PASSWORD': '5Ytf*NCgke_,56w',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
